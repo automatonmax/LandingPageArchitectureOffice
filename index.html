@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta name="google-site-verification" content="x1kIgw5fgMlJXgdgI__koxR3ssdReKjfogCqRByTGkA" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="אדריכלות, עיצוב פנים, תכנון פרויקטים, אדריכלים, עיצוב משרדים, שיפוצים">
+    <meta name="author" content="משרד אדריכלות">
+    <title>משרד אדריכלות - עיצוב ותכנון מתקדם</title>
+    <link rel="icon" href="favicon.svg" type="image/svg">
+    <link rel="shortcut icon" href="favicon.svg" type="image/svg">
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body dir="rtl">
+
+    <div class="header-section"></div>
+    <nav class="navbar" onclick="toggleMenu()">
+        <button class="menu-toggle">☰</button>
+        <ul class="menu">
+            <li class="close-btn"><a href="javascript:void(0);" onclick="toggleMenu()">✖</a></li>
+            <li><a href="./index.html"><span class="menu-icon">✓</span><span>עלינו</span></a></li>
+            <li><a href="./index.html#services"><span class="menu-icon">✓</span><span>שירותים</span></a></li>
+            <li><a href="./index.html#contact"><span class="menu-icon">✓</span><span>צור קשר</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <br/>
+        <div class="icon-container">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.2929 8.70711L8 3.41421L2.70711 8.7071L1.29289 7.29289L8 0.585785L14.7071 7.29289L13.2929 8.70711Z" fill="#000000"></path> 
+                <path d="M13.2929 15.2071L8 9.91421L2.70711 15.2071L1.29289 13.7929L8 7.08578L14.7071 13.7929L13.2929 15.2071Z" fill="white"></path> 
+            </svg>
+        </div>
+        <br/>
+
+        <div class="typewriter-container">
+            <span class="static-text">משרד אדריכלות - </span>
+            <span class="dynamic-text" id="dynamic-text"></span>
+        </div>
+
+        <h1 class="caption">משרד אדריכלות - תכנון ועיצוב פרויקטים</h1>
+        <h2>מובילים אתכם לבתים ומבנים מעוצבים בצורה חכמה ומודרנית</h2>
+
+        <div id="services">
+            <h3 class="section-title">מה אנחנו מציעים?</h3>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div class="card-1">תכנון בתים פרטיים</div>
+                <div class="card-1">עיצוב משרדים</div>
+                <div class="card-1">שיפוצים</div>
+                <div class="card-1">תכנון פנים</div>
+            </div>
+        </div>
+
+        <div class="text-content">
+            <h3 class="section-title">קצת עלינו</h3>
+            <p>אנחנו משרד אדריכלות עם ניסיון רב בתחום, מתמחים ביצירת תכניות עיצוביות מותאמות אישית לכל לקוח. כל פרויקט שלנו משלב יצירתיות, פרקטיות והבנה מעמיקה של צורכי הלקוח.</p>
+        </div>
+
+        <h2 class="small">מהו עיצוב אדריכלי</h2>
+        <h2 class="small">טיפים לעיצוב חללים</h2>
+        <h2 class="small">איך לבחור אדריכל נכון לפרויקט שלך</h2>
+
+        <section id="contact">
+            <div class="section-content">
+                <h2>השאירו את פרטיכם לקבלת ייעוץ והצעת מחיר</h2>
+                <div style="width:100%;height:500px;" data-fillout-id="osoD2LuqNzus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+                <script src="https://server.fillout.com/embed/v1/"></script>
+            </div>
+        </section>
+
+        <footer>
+            <div class="section-content">
+             
+                    <p>© כל הזכויות שמורות - 
+                        <a target="_blank" href="https://automatonmax.github.io/homepage/">אוטומקס</a>
+                    </p>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const element = document.getElementById("dynamic-text");
+        const textArray = ["עיצוב פנים", "תכנון פרויקטים", "אדריכלות מודרנית"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function type() {
+            const currentText = textArray[textIndex];
+            if (isDeleting) {
+                element.innerHTML = currentText.substring(0, charIndex - 1) + '<span class="caret">|</span>';
+                charIndex--;
+                typingSpeed = 50;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % textArray.length;
+                }
+            } else {
+                element.innerHTML = currentText.substring(0, charIndex + 1) + '<span class="caret">|</span>';
+                charIndex++;
+                typingSpeed = 150;
+                if (charIndex === currentText.length) {
+                    isDeleting = true;
+                    typingSpeed = 1000;
+                }
+            }
+            setTimeout(type, typingSpeed);
+        }
+
+        type();
+
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('show');
+        }
+
+        document.addEventListener('click', function(event) {
+            const navbar = document.querySelector('.navbar');
+            if (!navbar.contains(event.target)) {
+                menu.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
